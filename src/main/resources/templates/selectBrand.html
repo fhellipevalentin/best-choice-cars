@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Brand</title>
+</head>
+<body>
+    <h2>Select Brand</h2>
+    
+    <form th:action="@{/getCarByBrand}" method="post" th:object="${car}">
+        <label for="brand">Select Brand:</label>
+        <select id="brand" th:field="*{brand}">
+            <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}"></option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
