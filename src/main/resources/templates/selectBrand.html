@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Select Brand</title>
+	<meta charset="UTF-8">
+	<title>Select Brand</title>
 </head>
-<body>
-    <h2>Select Brand</h2>
-    
-    <form th:action="@{/getCarByBrand}" method="post" th:object="${car}">
-        <label for="brand">Select Brand:</label>
-        <select id="brand" th:field="*{brand}">
-            <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}"></option>
-        </select>
-        <input type="submit" value="Search">
-    </form>
+
+<body align="center">
+	<h1>BestChoice Cars</h1>
+	<h3>Chosse brand to find available models</h3>
+	<form th:action="@{/getCarByBrand}" method="post" th:object="${car}">
+		<table border="1" align="center">
+			<thead>
+				<tr>
+					<th>Branch: </th>
+					<th><select id="brand" th:field="*{brand}">
+							<option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}"></option>
+						</select></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="2"><input type="submit" value="Find Models"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</form>
+	<br>
+	<a th:href="@{/}"><button>back</button></a>
 </body>
+
 </html>
