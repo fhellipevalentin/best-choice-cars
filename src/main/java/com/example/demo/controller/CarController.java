@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Car;
 import com.example.demo.repository.CarRepository;
@@ -38,5 +39,12 @@ public class CarController {
         List<Car> cars = carRepository.findByBrand(car.getBrand());
         model.addAttribute("cars", cars);
         return "getCarByBrand";
+    }
+    
+    @PostMapping("/selectedCar")
+    public String selectedCar(@RequestParam Long selectedCar, Model model) {
+        Car car = carRepository.findById(selectedCar).orElseThrow(() -> new IllegalArgumentException("Invalid car Id:" + selectedCar));
+        model.addAttribute("car", car);
+        return "congratulations";
     }
 }
