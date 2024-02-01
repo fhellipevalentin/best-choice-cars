@@ -16,7 +16,7 @@ public class Car {
 	private String model;
 	private String yearOfManufacture;
 	private String km;
-	private String price;
+	private Integer price;
 	private String fuel;
 	public Long getId() {
 		return id;
@@ -49,10 +49,10 @@ public class Car {
 	public void setKm(String km) {
 		this.km = km;
 	}
-	public String getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getFuel() {

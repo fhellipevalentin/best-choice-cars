@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Select Price Range</title>
+</head>
+
+<body align="center">
+    <h1>BestChoice Cars</h1>
+    <h3>Choose price range to find available cars</h3>
+    <br>
+    <form th:action="@{/searchByPrice}" method="post" th:object="${car}">
+        <label><input type="radio" th:value="lessThan" th:name="priceRange" /> < 5 lakhs</label>
+        <label><input type="radio" th:value="moreThan" th:name="priceRange" /> > 5 lakhs</label>
+        <br>
+        <input type="submit" value="Find Your Car">
+    </form>
+    <br>
+    <a th:href="@{/}"><button>Back</button></a>
+</body>
+
+</html>

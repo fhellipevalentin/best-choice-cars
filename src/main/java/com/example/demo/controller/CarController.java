@@ -47,4 +47,25 @@ public class CarController {
         model.addAttribute("car", car);
         return "congratulations";
     }
+    
+    @GetMapping("/searchByPrice")
+    public String searchByPrice(Model model) {
+        model.addAttribute("car", new Car());
+        return "searchByPrice";
+    }
+    
+    @PostMapping("/searchByPrice")
+    public String processSearchByPrice(@RequestParam String priceRange, Model model) {
+        int maxPrice = 500000;
+
+        if ("lessThan".equals(priceRange)) {
+            List<Car> affordableCars = carRepository.findByPriceLessThan(maxPrice);
+            model.addAttribute("cars", affordableCars);
+        } else if ("moreThan".equals(priceRange)) {
+            List<Car> luxuryCars = carRepository.findByPriceGreaterThanEqual(maxPrice);
+            model.addAttribute("cars", luxuryCars);
+        }
+
+        return "displayCarsByPrice";
+    }
 }
